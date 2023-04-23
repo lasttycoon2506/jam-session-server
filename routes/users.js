@@ -1,5 +1,5 @@
 import express from "express";
-import { getUsers,getUser,createUser, updateUser, deleteUser }from "/Users/gabrielvalenzuela/jam-session-server/controllers/users.js";
+import { getUsers,getUser,createUser, updateUser, deleteUser }from "../controllers/users.js";
 
 const usersRouter = express.Router();
 

@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import userRouter from "./routes/users.js"
+import usersRouter from "./routes/users.js"
 
 /* Configuration */
 dotenv.config();
@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
   console.log("Home Page")
 })
 
-app.use('/users', userRouter)
+app.use('/users', usersRouter)
 
 
 app.listen(4001);
