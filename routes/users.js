@@ -28,6 +28,7 @@ userRouter
 
 userRouter.param("id", (req, res, next, id) => {
     console.log(id)
+    next()
 })
 
 export default userRouter
