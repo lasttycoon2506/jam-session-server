@@ -1,34 +1,16 @@
 import express from "express";
+import { getUsers,getUser,createUser, updateUser, deleteUser }from "/Users/gabrielvalenzuela/jam-session-server/controllers/users.js";
 
-const userRouter = express.Router();
+const usersRouter = express.Router();
 
-userRouter.get("/", (req, res) => {
-    res.send("User");
-})
+usersRouter.get('/', getUsers)
 
-userRouter.get("/new", (req, res) => {
-    res.send("New User");
-})
+usersRouter.post('/', createUser)
 
-userRouter.post('/', (req, res) => {
-    res.send('Create User');
-})
+usersRouter
+    .route('/:id')
+    .get(getUser)
+    .put(updateUser)
+    .delete(deleteUser)
 
-userRouter
-    .route("/:id")
-    .get((req, res) => {
-        res.send(`Get User ${req.params.id}`)
-    })
-    .post((req, res) => {
-        res.send(`Post User ${req.params.id}`)
-    })
-    .delete((req, res) => {
-        res.send(`Delete User ${req.params.id}`)
-    })
-
-userRouter.param("id", (req, res, next, id) => {
-    console.log(id)
-    next()
-})
-
-export default userRouter
+export default usersRouter

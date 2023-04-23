@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 var Int32 = mongoose.Int32; // Not final, might need to go about getting Integer another way
 
-const userSchema = new mongoose.Schema({
+const usersSchema = new mongoose.Schema({
     userId: {
         type: Int32,
         require: true
@@ -37,5 +37,5 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-const user = mongoose.model("user", userSchema);
-module.exports = user;
+const users = mongoose.model("users", usersSchema);
+module.exports = users;
