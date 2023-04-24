@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import multer from "multer";
 
 /* Configuration */
 dotenv.config();
@@ -17,11 +18,11 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 /* Routes with Files */
-app.post("/posts", upload.single("picture"), createPost);
+//app.post("/posts", upload.single("picture"), createPost);
 
 /* Routes */
-app.use("/users", userRoutes);
-app.use("/posts", postRoutes);
+//app.use("/users", userRoutes);
+//app.use("/posts", postRoutes);
 
 /* MongoDB Setup */
 const PORT = process.env.PORT || 4001;
