@@ -1,12 +1,13 @@
-import express from "express";
-import { retrieveAllPosts, retrieveFindPosts, retrieveSellPosts, createFindPost, createSellPost } from "../controllers/posts.js";
+import express from "expres";
+import { getAllPosts, getUserPosts, createPost, deletePost } from "../controllers/posts.js";
 
-const postsRouter = express.Router();
+const router = express.Router();
 
-postsRouter.get('/:id', retrieveAllPosts)
-postsRouter.get('/posts/find/:id', retrieveFindPosts)
-postsRouter.get('/posts/sell/:id', retrieveSellPosts)
-postsRouter.post('/posts/find', createFindPost)
-postsRouter.post('/posts/sell', createSellPost)
+router.get("/", getAllPosts);
+router.get("/:userId", getUserPosts);
 
-export default postsRouter
+router.put("/", createPost);
+
+router.delete("/:userId", deletePost);
+
+export default router;
