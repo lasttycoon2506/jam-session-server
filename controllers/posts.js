@@ -1,66 +1,52 @@
-import express from 'express'
-import * as posts from './Model.mjs'
+import Post from '../models/Post.js'
 
-const app = express()
-const PORT = 3000
+export const getAllPosts = async (req, res) => {
+    try {
+        const post = await Post.find();
+        res.status(200).json(post);
+    } catch (err) {
+        res.status(409).json({ message: err.message});
+    }
+};
 
-app.use(express.json())
+export const getUserPosts = async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const post = await Post.find({ userId: userId });
+        res.status(200).json(post);
+    } catch (err) {
+        res.status(409).json({ message: err.message});
+    }
+};
 
-app.get('/posts', (req, res) => {
-    posts.retrieveAllPosts()
-        .then(allPosts => {
-            res.json(allPosts)
-        })
-        .catch(error => {
-            console.error(error);
-            res.status(500).json({ Error: 'No posts exist' })
-        })
-})
+export const createPost = async (req, res) => {
+    try {
+        const { userId, type } = req.params;
+        // are corresponding field parameters to db necessary as long as theyre passed in order? 
+        const { instrument, experience, genres, availability, recordingExperience, description, imagePaths, profileLink } =
+        ( req.body.instrument, req.body.experience, req.body.genres, req.body.availability, req.body.recordingExperience, req.body.description,
+            req.body.imagePaths, req.body.profileLink);
+        const post = await new Post({ userId: userId, type: type, instrument: instrument, experience: experience, genres: genres,
+        availability: availability, recordingExperience: recordingExperience, description: description, imagePaths: imagePaths, profileLink: profileLink });
+        res.status(201).json(post);
+    } catch (err) {
+        res.status(500).json({ message: err.message});
+    }
+};
 
-app.get('/posts/find', (req, res) => {
-    posts.retrieveFindPosts(req.body.userId)
-        .then(findPosts => {
-            res.json(findPosts)
-        })
-        .catch(error => {
-            console.error(error);
-            res.status(500).json({ Error: 'No find posts by that user exist' })
-        })
-})
+export const deletePost = async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const deletedPost = await Post.deleteOne({ userId: userId });
+        if (deletedPost.deletedCount === 1) {
+            res.status(204).send()
+        }
+        else {
+            res.status(500).json({ Error: 'corresponding post not found' })
+        }
+    } catch (err) {
+        res.status(500).json({ message: err.message});
+    }
+};
 
-app.get('/posts/sell', (req, res) => {
-    posts.retrieveSellPosts(req.body.userId)
-        .then(sellPosts => {
-            res.json(sellPosts)
-        })
-        .catch(error => {
-            console.error(error);
-            res.status(500).json({ Error: 'No sell posts by that user exist' })
-        })
-})
 
-app.post('/posts/find', (req, res) => {
-    posts.createFindPost(req.body.instrument, req.body.experience, req.body.genre, req.body.availability, req.body.recording)
-        .then(findPost => {
-            res.status(201).json(findPost);
-        })
-        .catch(error => {
-            console.error(error)
-            res.status(500).json({ Error: 'Missing Required Field(s)' })
-        })
-})
-
-app.post('/posts/sell', (req, res) => {
-    posts.createSellPost(req.body.purpose, req.body.photos, req.body.profileLink)
-        .then(sellPost => {
-            res.status(201).json(sellPost);
-        })
-        .catch(error => {
-            console.error(error)
-            res.status(500).json({ Error: 'Missing Required Field(s)' })
-        })
-})
-
-app.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}...`);
-});
