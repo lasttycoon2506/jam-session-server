@@ -11,7 +11,6 @@ const postSchema = mongoose.Schema({
     recordingExperience: String,
     description: String,
     imagePaths: [],
-    profileLink: String
 });
 
 const Post = mongoose.model('Post', postSchema);
