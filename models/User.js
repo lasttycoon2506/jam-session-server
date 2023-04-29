@@ -2,9 +2,9 @@ import mongoose from "mongoose";
 
 var Int32 = mongoose.Int32; // Not final, might need to go about getting Integer another way
 
-const usersSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     userId: {
-        type: Int32,
+        type: Number,
         require: true
     },
     email: {
@@ -37,5 +37,7 @@ const usersSchema = new mongoose.Schema({
     }
 });
 
-const users = mongoose.model("users", usersSchema);
-module.exports = users;
+const User = mongoose.model("User", userSchema);
+
+export default User;
+
