@@ -1,7 +1,5 @@
 import mongoose from "mongoose";
 
-var Int32 = mongoose.Int32; // Not final, might need to go about getting Integer another way
-
 const userSchema = new mongoose.Schema({
     userId: {
         type: Number,
