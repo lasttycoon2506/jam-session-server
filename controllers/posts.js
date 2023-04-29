@@ -22,12 +22,12 @@ export const getUserPosts = async (req, res) => {
 export const createPost = async (req, res) => {
     try {
         const { userId, type } = req.params;
-        // are corresponding field parameters to db necessary as long as theyre passed in order? 
-        const { instrument, experience, genres, availability, recordingExperience, description, imagePaths, profileLink } =
-        ( req.body.instrument, req.body.experience, req.body.genres, req.body.availability, req.body.recordingExperience, req.body.description,
-            req.body.imagePaths, req.body.profileLink);
+        const { instrument, experience, genres, availability, recordingExperience, description, imagePaths } =
+        (req.body.instrument, req.body.experience, req.body.genres, req.body.availability, req.body.recordingExperience, req.body.description,
+            req.body.imagePaths);
         const post = await new Post({ userId: userId, type: type, instrument: instrument, experience: experience, genres: genres,
-        availability: availability, recordingExperience: recordingExperience, description: description, imagePaths: imagePaths, profileLink: profileLink });
+        availability: availability, recordingExperience: recordingExperience, description: description, imagePaths: imagePaths });
+        post.save();
         res.status(201).json(post);
     } catch (err) {
         res.status(500).json({ message: err.message});
