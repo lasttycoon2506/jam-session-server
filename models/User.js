@@ -1,9 +1,10 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-    userId: {
+    _id: {
         type: Number,
-        require: true
+        require: true,
+        auto: true
     },
     email: {
         type: String,
