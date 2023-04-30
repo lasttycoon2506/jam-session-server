@@ -75,7 +75,7 @@ const deleteAllUsers = asyncHandler(async (req, res, next) => {
 
 // const getUser = async (req, res) => {
 //   try {
-//     const users = await User.find({ userId: req.parmas.id });
+//     const users = await User.find({ userId: req.parmas.id }); // might need to add a timeout
 //     res.status(200).json(users);
 //   } catch (err) {
 //     res.status(404);
@@ -116,7 +116,7 @@ const deleteAllUsers = asyncHandler(async (req, res, next) => {
 //     const paramId = req.params.id;
 //     const updatedFields = req.body;
 
-//     const updatedUser = await User.updateOne(
+//     const updatedUser = await User.updateOne( // might need to add a timeout
 //       { userId: paramId },
 //       { $set: updatedFields }
 //     );
@@ -129,7 +129,7 @@ const deleteAllUsers = asyncHandler(async (req, res, next) => {
 // const deleteUser = async (req, res) => {
 //   try {
 //     const id = req.params.id;
-//     const user = await User.deleteOne({ userId: id });
+//     const user = await User.deleteOne({ userId: id }); 
 //     res.status(200).json(user);
 //   } catch (err) {
 //     res.status(404);
