@@ -10,12 +10,13 @@ import { verifyToken } from "../middleware/auth.js";
 
 const usersRoutes = express.Router();
 
-usersRoutes.get("/", verifyToken, getAllUsers);
+// TODO: add authentication middleware
+usersRoutes.get("/", getAllUsers);
 usersRoutes
   .route("/:id")
-  .get(verifyToken, getUser)
-  .put(verifyToken, updateUserById)
-  .delete(verifyToken, deleteUser);
+  .get(getUser)
+  .put(updateUserById)
+  .delete(deleteUser);
 usersRoutes.delete("/", deleteAllUsers);
 
 export default usersRoutes;

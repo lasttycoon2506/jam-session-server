@@ -9,11 +9,12 @@ import { verifyToken } from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.get("/", verifyToken, getAllPosts);
-router.get("/:userId", verifyToken, getUserPosts);
+// TODO: add authentication middleware
+router.get("/", getAllPosts);
+router.get("/:userId", getUserPosts);
 
-router.put("/", verifyToken, createPost);
+router.put("/", createPost);
 
-router.delete("/:userId", verifyToken, deletePost);
+router.delete("/:userId", deletePost);
 
 export default router;
