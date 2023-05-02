@@ -1,13 +1,19 @@
-import express from "expres";
-import { getAllPosts, getUserPosts, createPost, deletePost } from "../controllers/posts.js";
+import express from "express";
+import {
+  getAllPosts,
+  getUserPosts,
+  createPost,
+  deletePost,
+} from "../controllers/posts.js";
+import { verifyToken } from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.get("/", getAllPosts);
-router.get("/:userId", getUserPosts);
+router.get("/", verifyToken, getAllPosts);
+router.get("/:userId", verifyToken, getUserPosts);
 
-router.put("/", createPost);
+router.put("/", verifyToken, createPost);
 
-router.delete("/:userId", deletePost);
+router.delete("/:userId", verifyToken, deletePost);
 
 export default router;
