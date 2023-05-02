@@ -2,6 +2,8 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import multer from "multer";
+import usersRoutes from "./routes/users.js"
+
 
 /* Configuration */
 dotenv.config();
