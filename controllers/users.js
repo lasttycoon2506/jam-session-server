@@ -41,7 +41,6 @@ export default getAllUsers;
 export {
   getAllUsers,
   getUser,
-  createUser,
   updateUserById,
   deleteUser,
   deleteAllUsers,
