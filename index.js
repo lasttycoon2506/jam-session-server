@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import multer from "multer";
-import usersRouter from "./routes/users.js"
+import usersRoutes from "./routes/users.js"
 
 
 /* Configuration */
@@ -23,7 +23,7 @@ const upload = multer({ storage });
 //app.post("/posts", upload.single("picture"), createPost);
 
 /* Routes */
-//app.use("/users", usersRouter);
+app.use("/users", usersRoutes);
 //app.use("/posts", postRoutes);
 
 /* MongoDB Setup */
