@@ -23,7 +23,7 @@ const upload = multer({ storage });
 //app.post("/posts", upload.single("picture"), createPost);
 
 /* Routes */
-app.use("/users", usersRoutes);
+//app.use("/users", userRoutes);
 //app.use("/posts", postRoutes);
 
 /* MongoDB Setup */
