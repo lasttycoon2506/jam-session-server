@@ -9,7 +9,7 @@ const getAllUsers = asyncHandler(async (req, res, next) => {
 
 const getUser = asyncHandler(async (req, res, next) => {
   const id = req.params.id;
-  const user = await User.find({ userId: id });
+  const user = await User.find({ _id: id });
   res.send(user);
 });
 
@@ -26,7 +26,7 @@ const updateUserById = asyncHandler(async (req, res, next) => {
 
 const deleteUser = asyncHandler(async (req, res, next) => {
   const id = req.params.id;
-  const user = await User.deleteOne({ userId: id });
+  const user = await User.deleteOne({ _id: id });
   res.send(user);
 });
 
