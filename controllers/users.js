@@ -18,7 +18,7 @@ const updateUserById = asyncHandler(async (req, res, next) => {
   const updatedFields = req.body;
 
   const updatedUser = await User.updateOne(
-    { userId: paramId },
+    { _id: paramId },
     { $set: updatedFields }
   );
   res.send(updatedUser);
