@@ -7,7 +7,7 @@ const postSchema = mongoose.Schema({
     instrument: String,
     experience: String,
     genres: [],
-    availability: { type: String, required: true },
+    availability: String,
     recordingExperience: String,
     description: String,
     imagePaths: [],
