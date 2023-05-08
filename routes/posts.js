@@ -13,7 +13,7 @@ const router = express.Router();
 router.get("/", getAllPosts);
 router.get("/:userId", getUserPosts);
 
-router.put("/", createPost);
+router.post("/", createPost);
 
 router.delete("/:userId", deletePost);
 
