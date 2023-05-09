@@ -21,10 +21,9 @@ export const getUserPosts = async (req, res) => {
 
 export const createPost = async (req, res) => {
     try {
-        const { userId, type } = req.params;
-        const { instrument, experience, genres, availability, recordingExperience, description, imagePaths } =
-        (req.body.instrument, req.body.experience, req.body.genres, req.body.availability, req.body.recordingExperience, req.body.description,
-            req.body.imagePaths);
+        const userId = req.params;
+        const { type, instrument, experience, genres, availability, recordingExperience, description, imagePaths } =
+        (req.body);
         const post = await new Post({ userId: userId, type: type, instrument: instrument, experience: experience, genres: genres,
         availability: availability, recordingExperience: recordingExperience, description: description, imagePaths: imagePaths });
         post.save();
