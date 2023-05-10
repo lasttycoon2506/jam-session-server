@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import multer from "multer";
+import cors from "cors";
 import userRoutes from "./routes/users.js";
 import postRoutes from "./routes/posts.js";
 import { createPost } from "./controllers/posts.js";
@@ -10,6 +11,7 @@ import { createPost } from "./controllers/posts.js";
 dotenv.config();
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 /* File Storage */
 const storage = multer.diskStorage({
