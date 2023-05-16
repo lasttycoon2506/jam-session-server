@@ -3,9 +3,9 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import multer from "multer";
 import cors from "cors";
-import userRoutes from "./routes/users.js";
+import usersRoutes from "./routes/users.js";
 import postRoutes from "./routes/posts.js";
-import { createPost } from "./controllers/posts.js";
+import router from "./routes/auth.js";
 
 /* Configuration */
 dotenv.config();
@@ -26,8 +26,9 @@ const upload = multer({ storage });
 app.post("/posts", upload.single("picture"), createPost);
 
 /* Routes */
-app.use("/users", userRoutes);
+app.use("/users", usersRoutes);
 app.use("/posts", postRoutes);
+app.use("/auth", router);
 
 /* MongoDB Setup */
 const PORT = process.env.PORT || 4001;
