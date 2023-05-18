@@ -11,7 +11,12 @@ import router from "./routes/auth.js";
 dotenv.config();
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    exposedHeaders: "Access-Control-Allow-Origin",
+  })
+);
 
 /* File Storage */
 const storage = multer.diskStorage({
