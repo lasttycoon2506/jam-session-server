@@ -14,12 +14,7 @@ const app = express();
 app.use(express.json());
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
-app.use(
-  cors({
-    origin: "*",
-    exposedHeaders: "Access-Control-Allow-Origin",
-  })
-);
+app.use(cors());
 
 /* File Storage */
 const storage = multer.diskStorage({
