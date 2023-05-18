@@ -6,7 +6,7 @@ import cors from "cors";
 import helmet from "helmet";
 import usersRoutes from "./routes/users.js";
 import postRoutes from "./routes/posts.js";
-import router from "./routes/auth.js";
+import authRoutes from "./routes/auth.js";
 
 /* Configuration */
 dotenv.config();
@@ -36,7 +36,7 @@ const upload = multer({ storage });
 /* Routes */
 app.use("/users", usersRoutes);
 app.use("/posts", postRoutes);
-app.use("/auth", router);
+app.use("/auth", authRoutes);
 
 /* MongoDB Setup */
 const PORT = process.env.PORT || 4001;
