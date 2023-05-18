@@ -3,10 +3,10 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import multer from "multer";
 import cors from "cors";
-import helmet from "helmet";
 import usersRoutes from "./routes/users.js";
 import postRoutes from "./routes/posts.js";
 import authRoutes from "./routes/auth.js";
+import { createPost } from "./controllers/posts.js";
 
 /* Configuration */
 dotenv.config();
@@ -24,7 +24,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 /* Routes with Files */
-// app.post("/posts", upload.single("picture"), createPost);
+app.post("/posts", upload.single("picture"), createPost);
 
 /* Routes */
 app.use("/users", usersRoutes);
