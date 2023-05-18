@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import multer from "multer";
 import cors from "cors";
+import helmet from "helmet";
 import usersRoutes from "./routes/users.js";
 import postRoutes from "./routes/posts.js";
 import router from "./routes/auth.js";
@@ -11,12 +12,14 @@ import router from "./routes/auth.js";
 dotenv.config();
 const app = express();
 app.use(express.json());
-app.use(
-  cors({
-    origin: "*",
-    exposedHeaders: "Access-Control-Allow-Origin",
-  })
-);
+app.use(helmet());
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
+// app.use(
+//   cors({
+//     origin: "*",
+//     exposedHeaders: "Access-Control-Allow-Origin",
+//   })
+// );
 
 /* File Storage */
 const storage = multer.diskStorage({
