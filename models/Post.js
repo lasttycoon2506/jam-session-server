@@ -9,7 +9,7 @@ const postSchema = mongoose.Schema({
     availability: String,
     recordingExperience: String,
     description: String,
-    imagePaths: [],
+    imagePath: String,
 });
 
 const Post = mongoose.model('Post', postSchema);

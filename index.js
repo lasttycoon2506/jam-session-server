@@ -7,12 +7,14 @@ import usersRoutes from "./routes/users.js";
 import postRoutes from "./routes/posts.js";
 import authRoutes from "./routes/auth.js";
 import { createPost } from "./controllers/posts.js";
+import { verifyToken } from "./middleware/auth.js";
 
 /* Configuration */
 dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use(express.static("public"));
 
 /* File Storage */
 const storage = multer.diskStorage({
@@ -24,7 +26,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 /* Routes with Files */
-app.post("/posts", upload.array("images"), createPost);
+app.post("/posts", upload.single("image"), createPost);
 
 /* Routes */
 app.use("/users", usersRoutes);
