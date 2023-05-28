@@ -17,10 +17,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    instruments: {
-        type: Object,
-        required: false
-    },
+    instruments: [{
+            type: Object,
+            required: false
+    }],
     genres: {
         type: String,
         required: false
@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    bandExperience: {
+    experience: {
         type: String,
         required: false
     }
