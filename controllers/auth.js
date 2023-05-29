@@ -13,7 +13,7 @@ export const register = async (req, res) => {
       instruments,
       genres,
       availability,
-      experience,
+      bandExperience,
     } = req.body;
 
     // encrypt password
