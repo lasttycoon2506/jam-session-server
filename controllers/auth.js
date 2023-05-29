@@ -29,7 +29,7 @@ export const register = async (req, res) => {
       instruments,
       genres,
       availability,
-      experience,
+      bandExperience,
     });
     const savedUser = await newUser.save();
     res.status(201).json(savedUser);

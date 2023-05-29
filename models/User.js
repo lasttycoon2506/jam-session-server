@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    experience: {
+    bandExperience: {
         type: String,
         required: false
     }
