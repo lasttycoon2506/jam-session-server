@@ -10,16 +10,17 @@ import authRoutes from "./routes/auth.js";
 import { createPost } from "./controllers/posts.js";
 import { verifyToken } from "./middleware/auth.js";
 
+const corsOptions = {
+  origin: "*", // You can set this to a specific domain or multiple domains instead of "*"
+  exposedHeaders: "Content-Length", // Optional: Specify any additional headers you want to expose
+};
+
 /* Configuration */
 dotenv.config();
 const app = express();
 app.use(express.json());
-app.use(
-  cors({
-    origin: "*",
-  })
-);
-app.options("*", cors());
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 app.use(express.static("public"));
 app.use(bodyParser.json({ limit: "50mb" }));
 
