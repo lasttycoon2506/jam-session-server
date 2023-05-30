@@ -13,7 +13,7 @@ import { verifyToken } from "./middleware/auth.js";
 const corsOptions = {
   "origin": "*",
   "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin'],
   maxAge: 600
 };
 
