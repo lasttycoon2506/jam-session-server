@@ -11,10 +11,14 @@ import { createPost } from "./controllers/posts.js";
 import { verifyToken } from "./middleware/auth.js";
 
 const corsOptions = {
-  "origin": "*",
-  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-  allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin'],
-  maxAge: 600
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  allowedHeaders: [
+    "Content-Type",
+    "Authorization",
+    "Access-Control-Allow-Origin",
+  ],
+  maxAge: 600,
 };
 
 /* Configuration */
@@ -25,6 +29,7 @@ app.use(cors(corsOptions));
 app.options("*", cors(corsOptions));
 app.use(express.static("public"));
 app.use(bodyParser.json({ limit: "50mb" }));
+app.use(express.urlencoded({extended: false, limit:'100mb',parameterLimit:1000000 });
 
 /* File Storage */
 const storage = multer.diskStorage({
