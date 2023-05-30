@@ -26,7 +26,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 /* Routes with Files */
-app.post("/posts", upload.single("image"), createPost);
+app.post("/posts", verifyToken, upload.single("image"), createPost);
 
 /* Routes */
 app.use("/users", usersRoutes);
