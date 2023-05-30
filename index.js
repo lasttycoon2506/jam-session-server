@@ -11,8 +11,10 @@ import { createPost } from "./controllers/posts.js";
 import { verifyToken } from "./middleware/auth.js";
 
 const corsOptions = {
-  origin: "*", // You can set this to a specific domain or multiple domains instead of "*"
-  exposedHeaders: "Content-Length", // Optional: Specify any additional headers you want to expose
+  "origin": "*",
+  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  maxAge: 600
 };
 
 /* Configuration */
