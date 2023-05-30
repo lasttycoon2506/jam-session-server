@@ -24,12 +24,18 @@ const corsOptions = {
 /* Configuration */
 dotenv.config();
 const app = express();
-app.use(express.json());
 app.use(cors(corsOptions));
 app.options("*", cors(corsOptions));
 app.use(express.static("public"));
 app.use(bodyParser.json({ limit: "50mb" }));
-app.use(express.urlencoded({extended: false, limit:'100mb',parameterLimit:1000000 }));
+app.use(express.json());
+// app.use(
+//   express.urlencoded({
+//     extended: false,
+//     limit: "100mb",
+//     parameterLimit: 1000000,
+//   })
+// );
 
 /* File Storage */
 const storage = multer.diskStorage({
