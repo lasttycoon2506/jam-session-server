@@ -9,7 +9,7 @@ const getAllUsers = asyncHandler(async (req, res, next) => {
 
 const getUser = asyncHandler(async (req, res, next) => {
   const id = req.params.id;
-  const user = await User.find({ _id: id });
+  const user = await User.findOne({ _id: id });
   res.send(user);
 });
 
