@@ -8,8 +8,8 @@ Site allows a musician to create (and edit) a user profile, log-in (with authent
 1) Install Node.js
 2) Type the below into the CLI to install back-end:
 ```bash
-  git clone https://github.com/lasttycoon2506/jam-session-server-group.git
-  cd jam-session-server-group
+  git clone https://github.com/lasttycoon2506/jam-session-server.git
+  cd jam-session-server
   npm install
   node index.js
 ```
