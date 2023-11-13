@@ -1,5 +1,5 @@
 # Jam-Session-Server
-Back-end for website app allowing musicians to look for bandmates using Mongoose Cloud & Express
+Back-end for a site for musicians looking to form a band using Mongoose Cloud & Express
 ## Installation
 
 Install Jam Session Server with npm
