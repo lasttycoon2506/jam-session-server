@@ -11,6 +11,11 @@ Site allows a musician to create (and edit) a user profile, log-in (with authent
   git clone https://github.com/lasttycoon2506/jam-session-server.git
   cd jam-session-server
   npm install
-  node index.js
+```
+### To Run
+Type the following into CLI:
+```
+cd jam-session-server
+npm start
 ```
     
