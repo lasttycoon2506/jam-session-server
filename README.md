@@ -19,5 +19,6 @@ Site allows a musician to create (and edit) a user profile, log-in (with authent
 cd jam-session-server
 npm start
 ```
-
+## How To Use
+Refer to README for jam-session-client for usage
     
